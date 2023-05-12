@@ -1,0 +1,66 @@
+---
+title: "Exploration"
+author: "Aidan O'Hara"
+date: "2023-05-12"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Diekmann2007
+
+### digits
+
+### Looking out for number one
+
+```{r}
+library(ISLR)
+library(stringr)
+library(dplyr)
+
+magicNumber <- 54.2
+otto <- Auto %>% select(-name) %>%
+  mutate(firstDigitDisp = as.numeric(str_extract(displacement, "^\\d{1}"))) %>%
+  mutate(dispMagic = displacement*magicNumber,
+         firstDigitMagic = as.numeric(str_extract(dispMagic, "^\\d{1}"))) # see if scale invarience holds for car displacement
+hist(otto$firstDigitDisp)
+hist(otto$firstDigitMagic)
+
+```
+
+A skewed distribution of leading digits, aha! 
+Is it along a log_10((n+1)/n) relationship?
+
+Benford intially trialed his research on "baseball statistics, areas of river catchment, and ... addresses ..."
+
+The next guy, Pinkham started messing with transformation tests. Currency and digit conversion. Scale Invarience.
+
+Article goes on to measure digit frequency compared to predicted, the combination of all three data sets even more closely approximates Benfords.
+
+### Exceptions
+The lottery
+
+Supposedly, and I don't buy this really, constrained measurements don't obey the digit frequency, I might argue they do obey their own digit frequency, which may just be a tranformed benford...
+
+### Fraud
+Apparentley, benfords law is not obeyed when people imagine numbers.
+
+### Deriving Benford's law
+
+```{r}
+library(extraDistr)
+
+# construct predicted frequencies.
+start = c(1:9)
+transform <- log10((start + 1)/start)
+x <- rcat(1e5, transform)
+plot(prop.table(table(x)), type = "h")
+lines(1:9, dcat(1:9, transform), col = "red")
+
+```
+
+### The theory and application of Benford...
+
+### derivation of benford
