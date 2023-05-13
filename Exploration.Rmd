@@ -9,17 +9,34 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Diekmann2007
-
-### digits
-
-### Looking out for number one
-
 ```{r}
+
 library(ISLR)
 library(stringr)
 library(dplyr)
 
+```
+
+### Diekmann2007
+Not the first Digit! Using Benford's Law to Detect Fraudulent Scientific Data
+
+
+
+
+### digits
+
+N! is a benford sequence
+```{r}
+a <- c(1:500)
+b <- factorial(a)
+c <- data.frame(a,b)
+c <- c %>% mutate(firstDigit = as.numeric(str_extract(b, "^\\d{1}")))
+hist(c$firstDigit)
+```
+
+### Looking out for number one
+
+```{r}
 magicNumber <- 54.2
 otto <- Auto %>% select(-name) %>%
   mutate(firstDigitDisp = as.numeric(str_extract(displacement, "^\\d{1}"))) %>%
@@ -62,7 +79,9 @@ lines(1:9, dcat(1:9, transform), col = "red")
 
 ### The theory and application of Benford...
 
-### derivation of benford
+### derivation of benford, a vindication of Newcomb
+Cool examples of sequences that obey BL, lots of lots of math for unpacking
+
 
 # Examples
 
@@ -77,3 +96,6 @@ lines(1:9, dcat(1:9, transform), col = "red")
 ### Likert scale test
 
 Uniform dist \> 5 point likert \> sum of questions \> benford?
+
+### A functional operation, for another day
+
