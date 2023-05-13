@@ -30,22 +30,21 @@ hist(otto$firstDigitMagic)
 
 ```
 
-A skewed distribution of leading digits, aha! 
-Is it along a log_10((n+1)/n) relationship?
+A skewed distribution of leading digits, aha! Is it along a log_10((n+1)/n) relationship?
 
-Benford intially trialed his research on "baseball statistics, areas of river catchment, and ... addresses ..."
+Benford initially trialed his research on "baseball statistics, areas of river catchment, and ... addresses ..."
 
-The next guy, Pinkham started messing with transformation tests. Currency and digit conversion. Scale Invarience.
+The next guy, Pinkham started messing with transformation tests. Currency and digit conversion. Scale Variance.
 
 Article goes on to measure digit frequency compared to predicted, the combination of all three data sets even more closely approximates Benfords.
 
 ### Exceptions
+
 The lottery
 
 Supposedly, and I don't buy this really, constrained measurements don't obey the digit frequency, I might argue they do obey their own digit frequency, which may just be a tranformed benford...
 
-### Fraud
-Apparentley, benfords law is not obeyed when people imagine numbers.
+Numbers that never have 1 as starting digit, numbers that always have 1 as starting digit, other digits may demonstrate? \### Fraud Apparentley, benfords law is not obeyed when people imagine numbers.
 
 ### Deriving Benford's law
 
@@ -64,3 +63,17 @@ lines(1:9, dcat(1:9, transform), col = "red")
 ### The theory and application of Benford...
 
 ### derivation of benford
+
+# Examples
+
+### Accounting data
+
+### Elections data
+
+### What about base 8?
+
+### Restricted sets
+
+### Likert scale test
+
+Uniform dist \> 5 point likert \> sum of questions \> benford?
